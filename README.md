@@ -68,7 +68,7 @@ graph LR
 </p>
 
 <p align="center">
-  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-gitblock.svg" />
+  <img alt="3D contribution graph" src="./profile-3d-contrib/profile-night-green.svg" />
 </p>
 
 ### Trophies

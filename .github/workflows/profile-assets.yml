@@ -8,10 +8,13 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/profile-assets.yml"
-      - "README.md"
 
 permissions:
   contents: write
+
+concurrency:
+  group: profile-assets
+  cancel-in-progress: true
 
 jobs:
   generate:
@@ -24,26 +27,18 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2.0.2
         continue-on-error: true
         with:
-          username: yermakoffivan
           card: stats
-          outfile: profile/stats.svg
-          show_icons: "true"
-          hide_border: "true"
-          include_all_commits: "true"
-          theme: dark
+          path: profile/stats.svg
+          options: username=yermakoffivan&show_icons=true&hide_border=true&include_all_commits=true&theme=dark
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Top languages
         uses: stats-organization/github-readme-stats-action@v2.0.2
         continue-on-error: true
         with:
-          username: yermakoffivan
           card: top-langs
-          outfile: profile/top-langs.svg
-          layout: compact
-          langs_count: "8"
-          hide_border: "true"
-          theme: dark
+          path: profile/top-langs.svg
+          options: username=yermakoffivan&layout=compact&langs_count=8&hide_border=true&theme=dark
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Streak
@@ -58,15 +53,10 @@ jobs:
         uses: ryo-ma/github-profile-trophy@master
         continue-on-error: true
         with:
-          USERNAME: yermakoffivan
-          FILENAME: profile/trophy.svg
-          THEME: dark
-          COLUMN: "4"
-          ROW: "2"
-          MARGIN-W: "8"
-          MARGIN-H: "8"
-          NO-BG: "true"
-          RANK: "-?"
+          username: yermakoffivan
+          output_path: profile/trophy.svg
+          theme: dark
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 3D contribution graph
         uses: yoshi389111/github-profile-3d-contrib@v0.9.3
