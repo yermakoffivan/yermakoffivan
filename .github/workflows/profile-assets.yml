@@ -69,7 +69,7 @@ jobs:
           RANK: "-?"
 
       - name: 3D contribution graph
-        uses: yoshi389111/github-profile-3d-contrib@0.9.1
+        uses: yoshi389111/github-profile-3d-contrib@v0.9.3
         continue-on-error: true
         env:
           USERNAME: yermakoffivan
