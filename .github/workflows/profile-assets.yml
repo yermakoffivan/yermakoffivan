@@ -1,0 +1,85 @@
+name: profile assets
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/profile-assets.yml"
+      - "README.md"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stats card
+        uses: stats-organization/github-readme-stats-action@v2.0.2
+        continue-on-error: true
+        with:
+          username: yermakoffivan
+          card: stats
+          outfile: profile/stats.svg
+          show_icons: "true"
+          hide_border: "true"
+          include_all_commits: "true"
+          theme: dark
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Top languages
+        uses: stats-organization/github-readme-stats-action@v2.0.2
+        continue-on-error: true
+        with:
+          username: yermakoffivan
+          card: top-langs
+          outfile: profile/top-langs.svg
+          layout: compact
+          langs_count: "8"
+          hide_border: "true"
+          theme: dark
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Streak
+        uses: DenverCoder1/github-readme-streak-stats@v1.7.0
+        continue-on-error: true
+        with:
+          path: profile/streak.svg
+          options: user=yermakoffivan&theme=github-dark-dimmed&hide_border=true&disable_animations=true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trophies
+        uses: ryo-ma/github-profile-trophy@master
+        continue-on-error: true
+        with:
+          USERNAME: yermakoffivan
+          FILENAME: profile/trophy.svg
+          THEME: dark
+          COLUMN: "4"
+          ROW: "2"
+          MARGIN-W: "8"
+          MARGIN-H: "8"
+          NO-BG: "true"
+          RANK: "-?"
+
+      - name: 3D contribution graph
+        uses: yoshi389111/github-profile-3d-contrib@0.9.1
+        continue-on-error: true
+        env:
+          USERNAME: yermakoffivan
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit generated assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p profile
+          git add profile profile-3d-contrib || true
+          git commit -m "chore: refresh profile assets" || exit 0
+          git push
