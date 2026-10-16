@@ -12,7 +12,7 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=IBM+Plex+Sans&weight=600&size=24&duration=3500&pause=1200&color=2F81F7&center=true&vCenter=true&width=720&lines=Hi+there+%F0%9F%91%8B+I+am+Ivan+Yermakov;Analytics+Engineer+%C2%B7+Data+Engineer;BigQuery+%C2%B7+dbt+%C2%B7+Python+%C2%B7+SQL;7+years+shipping+data+infrastructure;Augsburg%2C+Bavaria+%C2%B7+open+to+new+roles)](https://github.com/yermakoffivan)
 
 **Analytics Engineer · Data Engineer**  
-Augsburg, Bavaria, Germany · open to new roles
+ Bavaria, Germany · open to new roles
 
 <p>
   <a href="https://ivanyermakov.com"><img src="https://img.shields.io/badge/Website-ivanyermakov.com-111827?style=for-the-badge" alt="Website"></a>
